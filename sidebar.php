@@ -29,6 +29,16 @@
                     <li class="<?php if(isset($active7)){echo $active7;}?>">
                         <a href="grafico_index.php"><i class="fa fa-area-chart"></i> Estadísticas con Graficos</a>
                     </li>
+                    <li class="<?php if(isset($active8)){echo $active8;}?>">
+                        <a href="Pais.php"><i class="fa fa-users"></i> País</a>
+                    </li>
+                    <li class="<?php if(isset($active9)){echo $active9;}?>">
+                        <a href="planta.php"><i class="fa fa-area-chart"></i>Planta</a>
+                    </li>
+                    <li class="<?php if(isset($active10)){echo $active10;}?>">
+                        <a href="Scarp.php"><i class="fa fa-dashboard"></i> Scarp</a>
+                    </li>
+
                     <!--
                     <li class="<?php if(isset($active8)){echo $active8;}?>">
                         <a href="about.php"><i class="fa fa-child"></i> Sobre Mi</a>
