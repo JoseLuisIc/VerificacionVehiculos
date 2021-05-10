@@ -1,21 +1,20 @@
 <?php
-    $title ="Datos | ";
+    $title ="Proyectos | ";
     include "head.php";
-    include "sidebar.php";
+    include "sidebar.php"; 
 ?>
-
-    <div class="right_col" role="main"><!-- page content -->
+    <div class="right_col" role="main"> <!-- page content -->
         <div class="">
             <div class="page-title">
                 <div class="clearfix"></div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <?php
-                        include("modal/new_ticket.php");
-                        include("modal/upd_ticket.php");
+                        include("modal/new_scrap.php");
+                        include("modal/upd_scrap.php");
                     ?>
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Datos Planta</h2>
+                            <h2>SCRAPS</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -25,12 +24,12 @@
                             <div class="clearfix"></div>
                         </div>
                         
-                        <!-- form seach -->
-                        <form class="form-horizontal" role="form" id="gastos">
+                        <!-- Form search -->
+                        <form class="form-horizontal" role="form" id="ingresos">
                             <div class="form-group row">
-                                <label for="q" class="col-md-2 control-label">Nombre/Asunto</label>
+                                <label for="q" class="col-md-2 control-label">Nombre</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" id="q" placeholder="Nombre del ticket" onkeyup='load(1);'>
+                                    <input type="text" class="form-control" id="q" placeholder="Nombre del SCRAP" onkeyup='load(1);'>
                                 </div>
                                 <div class="col-md-3">
                                     <button type="button" class="btn btn-default" onclick='load(1);'>
@@ -39,7 +38,7 @@
                                 </div>
                             </div>
                         </form>     
-                        <!-- end form seach -->
+                        <!-- end Form search -->
 
 
                         <div class="x_content">
@@ -55,19 +54,18 @@
             </div>
         </div>
     </div><!-- /page content -->
-
 <?php include "footer.php" ?>
 
-<script type="text/javascript" src="js/ticket.js"></script>
+<script type="text/javascript" src="js/scrap.js"></script>
 <script type="text/javascript" src="js/VentanaCentrada.js"></script>
 <script>
-$("#add").submit(function(event) {
+$( "#add" ).submit(function( event ) {
   $('#save_data').attr("disabled", true);
   
  var parametros = $(this).serialize();
      $.ajax({
             type: "POST",
-            url: "action/addticket.php",
+            url: "action/addscrap.php",
             data: parametros,
              beforeSend: function(objeto){
                 $("#result").html("Mensaje: Cargando...");
@@ -81,6 +79,7 @@ $("#add").submit(function(event) {
   event.preventDefault();
 })
 
+// success
 
 $( "#upd" ).submit(function( event ) {
   $('#upd_data').attr("disabled", true);
@@ -88,7 +87,7 @@ $( "#upd" ).submit(function( event ) {
  var parametros = $(this).serialize();
      $.ajax({
             type: "POST",
-            url: "action/updticket.php",
+            url: "action/updscrap.php",
             data: parametros,
              beforeSend: function(objeto){
                 $("#result2").html("Mensaje: Cargando...");
@@ -103,21 +102,12 @@ $( "#upd" ).submit(function( event ) {
 })
 
     function obtener_datos(id){
-        var description = $("#description"+id).val();
-        var title = $("#title"+id).val();
-        var kind_id = $("#kind_id"+id).val();
-        var project_id = $("#project_id"+id).val();
-        var category_id = $("#category_id"+id).val();
-        var priority_id = $("#priority_id"+id).val();
-        var status_id = $("#status_id"+id).val();
+            var description = $("#description"+id).val();
+            var name = $("#name"+id).val();
             $("#mod_id").val(id);
-            $("#mod_title").val(title);
             $("#mod_description").val(description);
-            $("#mod_kind_id").val(kind_id);
-            $("#mod_project_id").val(project_id);
-            $("#mod_category_id").val(category_id);
-            $("#mod_priority_id").val(priority_id);
-            $("#mod_status_id").val(status_id);
+            $("#mod_name").val(name);
         }
+
 
 </script>

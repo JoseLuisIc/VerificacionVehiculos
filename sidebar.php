@@ -6,17 +6,17 @@
                     </li>
 
                     <li class="<?php if(isset($active2)){echo $active2;}?>">
-                        <a href="tickets.php"><i class="fa fa-ticket"></i> Datos</a>
+                        <a href="tickets.php"><i class="fa fa-database"></i> Datos</a>
                     </li>
 
                     <li class="<?php if(isset($active3)){echo $active3;}?>">
                         <a href="projects.php"><i class="fa fa-list-alt"></i> Proyectos</a>
                     </li>
-
+                    <!--
                     <li class="<?php if(isset($active4)){echo $active4;}?>">
                         <a href="categories.php"><i class="fa fa-align-left"></i> Categorias</a>
                     </li>
-
+                    -->
                     <li class="<?php if(isset($active5)){echo $active5;}?>">
                         <a href="reports.php"><i class="fa fa-area-chart"></i> Estadísticas</a>
                     </li>
@@ -26,19 +26,28 @@
                         <a href="users.php"><i class="fa fa-users"></i> Usuarios</a>
                     </li>
 
+                    <li class="<?php if(isset($active8)){echo $active8;}?>">
+                        <a href="paises.php"><i class="fa fa-flag"></i> País</a>
+                    </li>
+                    <li class="<?php if(isset($active9)){echo $active9;}?>">
+                        <a href="plantas.php"><i class="fa fa-industry"></i>Planta</a>
+                    </li>
+                    <li class="<?php if(isset($active10)){echo $active10;}?>">
+                        <a href="scraps.php"><i class="fa fa-refresh"></i> Scrap</a>
+                    </li>
+                    <li class="<?php if(isset($active11)){echo $active11;}?>">
+                        <a href="modelos.php"><i class="fa fa-car"></i> Modelo</a>
+                    </li>
+                    <li class="<?php if(isset($active12)){echo $active12;}?>">
+                        <a href="lineas.php"><i class="fa fa-line-chart"></i> Lineas de Producción</a>
+                    </li>
+                    <li class="<?php if(isset($active13)){echo $active13;}?>">
+                        <a href="centros.php"><i class="fa fa-home"></i> Departamentos</a>
+                    </li>
+
                     <li class="<?php if(isset($active7)){echo $active7;}?>">
                         <a href="grafico_index.php"><i class="fa fa-area-chart"></i> Estadísticas con Graficos</a>
                     </li>
-                    <li class="<?php if(isset($active8)){echo $active8;}?>">
-                        <a href="Pais.php"><i class="fa fa-users"></i> País</a>
-                    </li>
-                    <li class="<?php if(isset($active9)){echo $active9;}?>">
-                        <a href="planta.php"><i class="fa fa-area-chart"></i>Planta</a>
-                    </li>
-                    <li class="<?php if(isset($active10)){echo $active10;}?>">
-                        <a href="Scarp.php"><i class="fa fa-dashboard"></i> Scarp</a>
-                    </li>
-
                     <!--
                     <li class="<?php if(isset($active8)){echo $active8;}?>">
                         <a href="about.php"><i class="fa fa-child"></i> Sobre Mi</a>

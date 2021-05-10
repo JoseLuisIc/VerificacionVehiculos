@@ -3,10 +3,14 @@
     include "head.php";
     include "sidebar.php";
 
-    $TicketData=mysqli_query($con, "select * from ticket where status_id=1");
+    $PlantaData=mysqli_query($con, "select * from plantadata where status_id=1");
+    $Plantas=mysqli_query($con, "select * from planta");
     $ProjectData=mysqli_query($con, "select * from project");
-    $CategoryData=mysqli_query($con, "select * from category");
+    $PaisData=mysqli_query($con, "select * from pais");
     $UserData=mysqli_query($con, "select * from user order by created_at desc");
+    $DepData=mysqli_query($con, "select * from centro");
+    $DataLine=mysqli_query($con, "select * from linea");
+    $ModelData=mysqli_query($con, "select * from modelo");
 ?>
     <div class="right_col" role="main"> <!-- page content -->
         <div class="">
@@ -14,9 +18,23 @@
                 <div class="row top_tiles">
                     <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="tile-stats">
-                          <div class="icon"><i class="fa fa-ticket"></i></div>
-                          <div class="count"><?php echo mysqli_num_rows($TicketData) ?></div>
-                          <h3>Datos Pendientes</h3>
+                          <div class="icon"><i class="fa fa-database"></i></div>
+                          <div class="count"><?php echo mysqli_num_rows($PlantaData) ?></div>
+                          <h3>Datos Planta</h3>
+                        </div>
+                    </div>
+                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                          <div class="icon"><i class="fa fa-industry"></i></div>
+                          <div class="count"><?php echo mysqli_num_rows($Plantas) ?></div>
+                          <h3>Plantas</h3>
+                        </div>
+                    </div>
+                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                          <div class="icon"><i class="fa fa-line-chart"></i></div>
+                          <div class="count"><?php echo mysqli_num_rows($DataLine) ?></div>
+                          <h3>Lineas de Producción</h3>
                         </div>
                     </div>
                     <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -28,9 +46,16 @@
                     </div>
                     <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="tile-stats">
-                          <div class="icon"><i class="fa fa-th-list"></i></div>
-                          <div class="count"><?php echo mysqli_num_rows($CategoryData) ?></div>
-                          <h3>Categorias</h3>
+                          <div class="icon"><i class="fa fa-car"></i></div>
+                          <div class="count"><?php echo mysqli_num_rows($ModelData) ?></div>
+                          <h3>Modelos</h3>
+                        </div>
+                    </div>
+                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                          <div class="icon"><i class="fa fa-flag"></i></div>
+                          <div class="count"><?php echo mysqli_num_rows($PaisData) ?></div>
+                          <h3>Paises</h3>
                         </div>
                     </div>
                     <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -38,6 +63,13 @@
                           <div class="icon"><i class="fa fa-users"></i></div>
                           <div class="count"><?php echo mysqli_num_rows($UserData) ?></div>
                           <h3>Usuarios</h3>
+                        </div>
+                    </div>
+                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                          <div class="icon"><i class="fa fa-home"></i></div>
+                          <div class="count"><?php echo mysqli_num_rows($DepData) ?></div>
+                          <h3>Departamentos</h3>
                         </div>
                     </div>
                 </div>
