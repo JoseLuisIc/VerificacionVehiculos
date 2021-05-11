@@ -4,8 +4,8 @@
     include "sidebar.php";
 ?>
 
-<div class="right_col" role="main" id="container">
-            
+<div class="right_col" role="main" id="container">            
+
 
 
 </div>
