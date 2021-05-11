@@ -4,9 +4,9 @@
     $action = (isset($_REQUEST['action']) && $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
     if (isset($_GET['id'])){
         $id_del=intval($_GET['id']);
-        $query=mysqli_query($con, "SELECT * from pais where id='".$id_del."'");
+        $query=mysqli_query($con, "SELECT * from planta where id='".$id_del."'");
         $count=mysqli_num_rows($query);
-            if ($delete1=mysqli_query($con,"DELETE FROM pais WHERE id='".$id_del."'")){
+            if ($delete1=mysqli_query($con,"DELETE FROM planta WHERE id='".$id_del."'")){
             ?>
             <div class="alert alert-success alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -28,7 +28,7 @@
         // escaping, additionally removing everything that could be (html/javascript-) code
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
          $aColumns = array('name');//Columnas de busqueda
-         $sTable = "pais";
+         $sTable = "planta";
          $sWhere = "";
         if ( $_GET['q'] != "" )
         {

@@ -6,7 +6,7 @@ function load(page){
 	var q= $("#q").val();
 	$("#loader").fadeIn('slow');
 	$.ajax({
-		url:'./ajax/tickets.php?action=ajax&page='+page+'&q='+q,
+		url:'./ajax/plantadata.php?action=ajax&page='+page+'&q='+q,
 		beforeSend: function(objeto){
 			$('#loader').html('<img src="./images/ajax-loader.gif"> Cargando...');
 		},
@@ -25,7 +25,7 @@ function eliminar (id)
 	if (confirm("Realmente deseas eliminar el ticket?")){	
 		$.ajax({
 			type: "GET",
-			url: "./ajax/tickets.php",
+			url: "./ajax/plantadata.php",
 			data: "id="+id,"q":q,
 			beforeSend: function(objeto){
 				$("#resultados").html("Mensaje: Cargando...");

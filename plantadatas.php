@@ -10,8 +10,8 @@
                 <div class="clearfix"></div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <?php
-                        include("modal/new_ticket.php");
-                        include("modal/upd_ticket.php");
+                        include("modal/new_plantadata.php");
+                        include("modal/upd_plantadata.php");
                     ?>
                     <div class="x_panel">
                         <div class="x_title">
@@ -30,7 +30,7 @@
                             <div class="form-group row">
                                 <label for="q" class="col-md-2 control-label">Nombre/Asunto</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" id="q" placeholder="Nombre del ticket" onkeyup='load(1);'>
+                                    <input type="text" class="form-control" id="q" placeholder="Nombre del dato" onkeyup='load(1);'>
                                 </div>
                                 <div class="col-md-3">
                                     <button type="button" class="btn btn-default" onclick='load(1);'>
@@ -58,7 +58,7 @@
 
 <?php include "footer.php" ?>
 
-<script type="text/javascript" src="js/ticket.js"></script>
+<script type="text/javascript" src="js/plantadata.js"></script>
 <script type="text/javascript" src="js/VentanaCentrada.js"></script>
 <script>
 $("#add").submit(function(event) {
@@ -67,7 +67,7 @@ $("#add").submit(function(event) {
  var parametros = $(this).serialize();
      $.ajax({
             type: "POST",
-            url: "action/addticket.php",
+            url: "action/addplantadata.php",
             data: parametros,
              beforeSend: function(objeto){
                 $("#result").html("Mensaje: Cargando...");
@@ -88,7 +88,7 @@ $( "#upd" ).submit(function( event ) {
  var parametros = $(this).serialize();
      $.ajax({
             type: "POST",
-            url: "action/updticket.php",
+            url: "action/updplantadata.php",
             data: parametros,
              beforeSend: function(objeto){
                 $("#result2").html("Mensaje: Cargando...");
@@ -103,7 +103,7 @@ $( "#upd" ).submit(function( event ) {
 })
 
     function obtener_datos(id){
-        var description = $("#description"+id).val();
+       /* var description = $("#description"+id).val();
         var title = $("#title"+id).val();
         var kind_id = $("#kind_id"+id).val();
         var project_id = $("#project_id"+id).val();
@@ -117,7 +117,7 @@ $( "#upd" ).submit(function( event ) {
             $("#mod_project_id").val(project_id);
             $("#mod_category_id").val(category_id);
             $("#mod_priority_id").val(priority_id);
-            $("#mod_status_id").val(status_id);
+            $("#mod_status_id").val(status_id);*/
         }
 
 </script>
