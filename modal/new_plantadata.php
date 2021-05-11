@@ -111,7 +111,14 @@
                         </div>
 
                         <div class="form-group">                                                                                                 <!--Hora Campo-->
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Hora<span class="required">*</span></label>               
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Inicio Turno<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input  type="time" name="title" class="form-control" placeholder="Hora" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">                                                                                                 <!--Hora Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Fin Turno<span class="required">*</span></label>               
                             <div class="col-md-9 col-sm-9 col-xs-12">
                               <input  type="time" name="title" class="form-control" placeholder="Hora" >
                             </div>
