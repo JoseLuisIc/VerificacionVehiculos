@@ -55,7 +55,7 @@
                         <div class="tile-stats">
                           <div class="icon"><i class="fa fa-flag"></i></div>
                           <div class="count"><?php echo mysqli_num_rows($PaisData) ?></div>
-                          <h3>Paises</h3>
+                          <h3>Países</h3>
                         </div>
                     </div>
                     <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -113,10 +113,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Correo electronico 
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Correo electrónico 
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" id="last-name" name="email" class="form-control col-md-7 col-xs-12" value="<?php echo $email; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Teléfono
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="name" id="first-name" class="form-control col-md-7 col-xs-12" value="<?php echo $name; ?>">        <!--Telefono-->
                                         </div>
                                     </div>
 

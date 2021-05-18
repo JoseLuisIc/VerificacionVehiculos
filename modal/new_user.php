@@ -31,6 +31,14 @@
                                     <option value="0" >Inactivo</option>  
                             </select>
                         </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <select class="form-control" required name="status">
+                                    <option value="" selected>-- Seleccionar Tipo de Usuario --</option>
+                                    <option value="1" >Administrador</option>
+                                    <option value="2" >Usuario</option>  
+                            </select>
+                        </div>
+                        <br>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Contraseña<span class="required">*</span>
                             </label>
