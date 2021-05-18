@@ -14,7 +14,8 @@
         $email = $row['email'];
         $profile_pic = $row['profile_pic'];
         $created_at = $row['created_at'];
-  
+        //$username_id = $row['id'];
+        //$userkind_id = $row['kind'];
     }
 
 

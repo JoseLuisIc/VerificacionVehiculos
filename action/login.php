@@ -13,8 +13,9 @@
 
 		if ($row = mysqli_fetch_array($query)) {
 			
-
+				/*Aqui se añaden las variables globales de sesión*/
 				$_SESSION['user_id'] = $row['id'];
+				$_SESSION['kind_id'] = $row['kind'];
 				header("location: ../dashboard.php");
 				
 
