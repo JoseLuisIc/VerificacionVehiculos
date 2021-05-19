@@ -30,11 +30,12 @@
 		$created_at=date("Y-m-d H:i:s");
 		$user_id=$_SESSION['user_id'];
 		$profile_pic="default.png";
+		$username=$_POST["username"];
 
 		$is_admin=0;
 		if(isset($_POST["is_admin"])){$is_admin=1;}
 
-			$sql="INSERT INTO user ( name, password, email, profile_pic, is_active, created_at) VALUES ('$end_name','$password','$email','$profile_pic',$status,'$created_at')";
+			$sql="INSERT INTO user (username, name, password, email, profile_pic, is_active, created_at) VALUES ('$username','$end_name','$password','$email','$profile_pic',$status,'$created_at')";
 			$query_new_insert = mysqli_query($con,$sql);
 				if ($query_new_insert){
 					$messages[] = "El usuario ha sido ingresado satisfactoriamente.";
