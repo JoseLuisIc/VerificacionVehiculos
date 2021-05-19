@@ -1,3 +1,13 @@
+<script type="text/javascript">
+function PasarValor()
+{
+        //document.getElementById("username").value = document.getElementById("email").value;
+        document.getElementById("email").required = true;
+		var str = document.getElementById("email").value;
+  		var res = str.split("@");
+        document.getElementById("username").value = res[0];
+}
+</script>
     <div> <!-- Modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-add"><i class="fa fa-plus-circle"></i> Agregar Usuario</button>
     </div>
@@ -21,9 +31,10 @@
                             <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <input name="email" type="text" class="form-control has-feedback-left" placeholder="Correo Electronico" required>
-                            <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                            <input onkeyup="PasarValor();" id="email" name="email" type="text" class="form-control" placeholder="Correo Electronico" required>
+                            <span class="fa fa-envelope form-control-feedback right" aria-hidden="true"></span>
                         </div>
+
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                             <select class="form-control" required name="status">
                                     <option value="" selected>-- Selecciona estado --</option>
@@ -31,6 +42,20 @@
                                     <option value="0" >Inactivo</option>  
                             </select>
                         </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <select class="form-control" required name="status">
+                                    <option value="" selected>-- Seleccionar Tipo de Usuario --</option>
+                                    <option value="1" >Administrador</option>
+                                    <option value="2" >Usuario</option>  
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input readonly name="username" id="username" type="text" class="form-control" placeholder="Nombre Usuario" >
+                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                            </div>
+                            
+                        <br>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Contraseña<span class="required">*</span>
                             </label>

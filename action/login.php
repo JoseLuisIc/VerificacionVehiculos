@@ -9,16 +9,19 @@
 	$email=mysqli_real_escape_string($con,(strip_tags($_POST["email"],ENT_QUOTES)));
 	$password=sha1(md5(mysqli_real_escape_string($con,(strip_tags($_POST["password"],ENT_QUOTES)))));
 
-    $query = mysqli_query($con,"SELECT * FROM user WHERE email =\"$email\" OR username=\"$email\" AND password = \"$password\";");
+	$query = mysqli_query($con,"SELECT * FROM user WHERE email =\"$email\"  AND password = \"$password\" OR username=\"$email\" AND password = \"$password\";");
 
-		if ($row = mysqli_fetch_array($query)) {
+	if ($row = mysqli_fetch_array($query)) {
 			
 				/*Aqui se añaden las variables globales de sesión*/
 				$_SESSION['user_id'] = $row['id'];
 				$_SESSION['kind_id'] = $row['kind'];
+				/*Recuperar al tipo*/
+				$_SESSION['user_kind'] = $row['kind'];
+				$_SESSION['user_email']= $row['email'];
+				$_SESSION['user_phone']= $row['phone'];
 				header("location: ../dashboard.php");
 				
-
 		}else{
 			$invalid=sha1(md5("contrasena y email invalido"));
 			header("location: ../index.php?invalid=$invalid");

@@ -69,6 +69,9 @@
                         <th class="column-title">Correo Electrónico </th>
                         <th class="column-title">Estado </th>
                         <th class="column-title">Fecha </th>
+                        <th class="column-title">Teléfono </th>
+                        <th class="column-title">Nombre de usuario </th>
+                        <th class="column-title">Tipo de usuario </th>
                         <th class="column-title no-link last"><span class="nobr"></span></th>
                     </tr>
                 </thead>
@@ -81,17 +84,27 @@
 
                             $name=$r['name'];
                             $email=$r['email'];
+                            $phone=$r['phone'];
+                            $userName=$r['username'];
+                            $kind=$r['kind'];
+                             if ($kind==1){$kind="Admin";}else if($kind==2) {$kind="Usuario";}
                             $created_at=date('d/m/Y', strtotime($r['created_at']));
                 ?>
                     <input type="hidden" value="<?php echo $name;?>" id="name<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $email;?>" id="email<?php echo $id;?>">
-                     <input type="hidden" value="<?php echo $status;?>" id="status<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $status;?>" id="status<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $phone;?>" id="phone<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $userName;?>" id="username<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $kind;?>" id="kind<?php echo $id;?>">
 
                     <tr class="even pointer">
                         <td><?php echo $name;?></td>
                         <td><?php echo $email;?></td>
                         <td ><?php echo $status_f; ?></td>
                         <td><?php echo $created_at;?></td>
+                        <td><?php echo $phone;?></td>
+                        <td><?php echo $userName;?></td>
+                        <td><?php echo $kind;?></td>
                         <td ><span class="pull-right">
                         <a href="#" class='btn btn-default' title='Editar Usuario' onclick="obtener_datos('<?php echo $id;?>');" data-toggle="modal" data-target=".bs-example-modal-lg-upd"><i class="glyphicon glyphicon-edit"></i></a> 
                         <a href="#" class='btn btn-default' title='Borrar Usuario' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
