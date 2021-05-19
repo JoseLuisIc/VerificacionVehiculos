@@ -1,7 +1,7 @@
  
                 <footer><!-- footer content -->
                     <div class="pull-right">
-                        This project is created using <a target="_blank" style="color: #0000ff" href="http://github.com/amnersaucedososa">Web Project Builder. </a>An online php code builder tool By <a style="color: #0000ff; text-decoration: underline;" target="_blank" href="http://github.com/amnersaucedososa">Abisoft</a>
+                        Usted está en un proyecto de Kaab Code S.A de C.V <a target="_blank" style="color: #0000ff" href=""> </a> <a style="color: #0000ff; text-decoration: underline;" target="_blank" href=""></a>
                     </div>
                     <div class="clearfix"></div>
                 </footer><!-- /footer content -->

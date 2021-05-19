@@ -34,7 +34,7 @@
                         <div class="tile-stats">
                           <div class="icon"><i class="fa fa-line-chart"></i></div>
                           <div class="count"><?php echo mysqli_num_rows($DataLine) ?></div>
-                          <h3>Lineas de Producción</h3>
+                          <h3>Líneas de Producción</h3>
                         </div>
                     </div>
                     <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -113,17 +113,25 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Correo electrónico 
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Correo electrónico 
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" id="last-name" name="email" class="form-control col-md-7 col-xs-12" value="<?php echo $email; ?>">
+                                            <input readonly type="text" id="email" name="email" class="form-control col-md-7 col-xs-12" value="<?php echo $email; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Teléfono
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Teléfono
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="name" id="first-name" class="form-control col-md-7 col-xs-12" value="<?php echo $name; ?>">        <!--Telefono-->
+                                            <input type="text" name="phone" id="phone" class="form-control col-md-7 col-xs-12" value="<?php echo $phone; ?>">        <!--Telefono-->
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="userkind">Tipo de Usuario
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input readonly type="text" class="form-control col-md-7 col-xs-12" value="<?php if ($userkind_id==1){echo $userkind_id="Administrador";}else if($userkind_id==2) { echo $userkind_id="Usuario"; }?>">        <!--TipoUsuario-->
                                         </div>
                                     </div>
 
@@ -134,21 +142,21 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Contraseña antigua
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="birthday" name="password" class="date-picker form-control col-md-7 col-xs-12" type="text" placeholder="**********">
+                                            <input id="password_old" type="password" name="password" class="date-picker form-control col-md-7 col-xs-12" type="text" placeholder="**********">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Nueva contraseña 
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="birthday" name="new_password" class="date-picker form-control col-md-7 col-xs-12" type="text">
+                                            <input id="password_new" type="password" name="new_password" class="date-picker form-control col-md-7 col-xs-12" type="text">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Confirmar contraseña nueva
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                      <input id="birthday" name="confirm_new_password" class="date-picker form-control col-md-7 col-xs-12" type="text">
+                                      <input id="password_confirm" type="password" name="confirm_new_password" class="date-picker form-control col-md-7 col-xs-12" type="text">
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>

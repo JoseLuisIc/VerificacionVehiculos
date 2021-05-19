@@ -1,6 +1,4 @@
 <?php
-
-	//update profile by abisoft https://github.com/amnersaucedososa
 	session_start();
 
 	if (!isset($_SESSION['user_id']) && $_SESSION['user_id']==null) {
@@ -16,10 +14,11 @@
 
 	$name = $_POST['name'];
 	$email = $_POST['email'];
+	$phone = $_POST['phone'];
 
 
 	if(isset($_POST['token'])){
-		$update=mysqli_query($con,"UPDATE user set name=\"$name\",email=\"$email\" where id=$id");
+		$update=mysqli_query($con,"UPDATE user set name=\"$name\",email=\"$email\",phone=\"$phone\" where id=$id");
 		if ($update) {
 			$success=sha1(md5("datos actualizados"));
             header("location: ../dashboard.php?success=$success");
@@ -43,9 +42,9 @@
 
 				if ($p==$password){ //comprobamos que la contraseña sea igual ala anterior
 
-					$update_passwd=mysqli_query($con,"UPDATE user set password=\"$password\" where id=$id");
+					$update_passwd=mysqli_query($con,"UPDATE user set password=\"$confirm_new_password\" where id=$id");
 					if ($update_passwd) {
-						$success_pass=sha1(md5("contrasena actualizada"));
+						$success_pass=sha1(md5("Contrasena actualizada"));
             			header("location: ../dashboard.php?success_pass=$success_pass");
 					}
 				}else{
@@ -53,7 +52,7 @@
             		header("location: ../dashboard.php?invalid=$invalid");
 				}
 			}else{
-				$error=sha1(md5("las nuevas  contraseñas no coinciden"));
+				$error=sha1(md5("Las nuevas  contraseñas no coinciden"));
             	header("location: ../dashboard.php?error=$error");
 			}
 		}

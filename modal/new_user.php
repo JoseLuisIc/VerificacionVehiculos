@@ -37,17 +37,21 @@ function PasarValor()
 
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                             <select class="form-control" required name="status">
-                                    <option value="" selected>-- Selecciona estado --</option>
+                                    <option value="" selected>-- Selecciona Estatus --</option>
                                     <option value="1" >Activo</option>
                                     <option value="0" >Inactivo</option>  
                             </select>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <select class="form-control" required name="status">
-                                    <option value="" selected>-- Seleccionar Tipo de Usuario --</option>
+                            <select class="form-control" required name="kinduser">
+                                    <option value="" selected>-- Tipo de Usuario --</option>
                                     <option value="1" >Administrador</option>
                                     <option value="2" >Usuario</option>  
                             </select>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input pattern="[0-9]{10,10}" maxlength="10" name="phone" id="phone" required type="text" class="form-control" placeholder="Teléfono">
+                                <span aria-hidden="true">Digite 10 numeros de teléfono.</span>
                         </div>
 
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
@@ -57,10 +61,10 @@ function PasarValor()
                             
                         <br>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Contraseña<span class="required">*</span>
-                            </label>
+                            <!--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Contraseña<span class="required">*</span>
+                            </label>-->
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="password" id="password" name="password" required class="form-control col-md-7 col-xs-12">
+                                <input type="password" placeholder="Contraseña" id="password" name="password" required class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="ln_solid"></div>

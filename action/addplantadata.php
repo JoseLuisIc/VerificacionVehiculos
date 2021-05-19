@@ -8,7 +8,7 @@
 		} else if (empty($_POST['project_id'])){
 			$errors[] = "Por favor, seleccione un Proyecto.";
 		} else if (empty($_POST['linea_id'])){
-			$errors[] = "Por favor, seleccione una Linea de Producción.";
+			$errors[] = "Por favor, seleccione una Línea de Producción.";
 		} else if (empty($_POST['dia_id'])){
 			$errors[] = "Por favor, seleccione una Fecha.";
 		}else if (

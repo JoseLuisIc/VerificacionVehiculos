@@ -1,4 +1,13 @@
-
+<script type="text/javascript">
+function PasarValorUpd()
+{
+        //document.getElementById("username").value = document.getElementById("email").value;
+        document.getElementById("mod_email").required = true;
+		var str = document.getElementById("mod_email").value;
+  		var res = str.split("@");
+        document.getElementById("mod_username").value = res[0];
+}
+</script>
     <div class="modal fade bs-example-modal-lg-upd" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
@@ -16,8 +25,12 @@
                             <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <input name="mod_email" id="mod_email" type="text" class="form-control has-feedback-left" required>
+                            <input onkeyup="PasarValorUpd();" name="mod_email" id="mod_email" type="text" class="form-control has-feedback-left" required>
                             <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input name="mod_username" id="mod_username" type="text" class="form-control" readonly placeholder="Nombre Usuario">
+                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                             <select class="form-control" required name="mod_status" id="mod_status">
@@ -26,11 +39,22 @@
                                     <option value="0" >Inactivo</option>  
                             </select>
                         </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <select class="form-control" required name="mod_kinduser" id="mod_kinduser"> 
+                                    <option value="" selected>-- Seleccionar Tipo de Usuario --</option>
+                                    <option value="1" >Administrador</option>
+                                    <option value="2" >Usuario</option>  
+                            </select>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input pattern="[0-9]{10,10}" maxlength="10" name="mod_phone" id="mod_phone" required type="text" class="form-control" placeholder="Teléfono">
+                                <span aria-hidden="true">Digite 10 numeros para el teléfono.</span>
+                        </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Contraseña<span class="required">*</span>
-                            </label>
+                            <!--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Contraseña<span class="required">*</span>
+                            </label> -->
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="password" id="password" name="password" class="form-control col-md-7 col-xs-12">
+                                <input type="password" placeholder="Nueva Contraseña" id="password" name="password" class="form-control col-md-7 col-xs-12">
                                 <p class="text-muted">La contraseña solo se modificara si escribes algo, en caso contrario no se modifica.</p>
                             </div>
                         </div>

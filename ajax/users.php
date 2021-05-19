@@ -87,7 +87,8 @@
                             $phone=$r['phone'];
                             $userName=$r['username'];
                             $kind=$r['kind'];
-                             if ($kind==1){$kind="Admin";}else if($kind==2) {$kind="Usuario";}
+                            $kind_aux_id=$r['kind'];
+                             if ($kind==1){$kind="Administrador";}else if($kind==2) {$kind="Usuario";}
                             $created_at=date('d/m/Y', strtotime($r['created_at']));
                 ?>
                     <input type="hidden" value="<?php echo $name;?>" id="name<?php echo $id;?>">
@@ -95,7 +96,7 @@
                     <input type="hidden" value="<?php echo $status;?>" id="status<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $phone;?>" id="phone<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $userName;?>" id="username<?php echo $id;?>">
-                    <input type="hidden" value="<?php echo $kind;?>" id="kind<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $kind_aux_id;?>" id="kind<?php echo $id;?>">
 
                     <tr class="even pointer">
                         <td><?php echo $name;?></td>

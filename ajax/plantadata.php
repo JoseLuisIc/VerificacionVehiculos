@@ -165,8 +165,8 @@
                         <th class="column-title">Pais </th>
                         <th class="column-title">Planta</th>
                         <th class="column-title">Proyecto</th>
-                        <th class="column-title">Linea de Producción</th>
-                        <th class="column-title">Dia</th>
+                        <th class="column-title">Línea de Producción</th>
+                        <th class="column-title">Día</th>
                         <th class="column-title" NOWRAP>Turno</th>
                         <th class="column-title">Semana</th>
                         <th class="column-title" NOWRAP>Hora Inicio - Hora Fin</th>

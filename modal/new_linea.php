@@ -1,6 +1,6 @@
 
     <div> 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-new"><i class="fa fa-plus-circle"></i> Nueva linea de proddución</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-new"><i class="fa fa-plus-circle"></i> Nueva Línea de Producción</button>
     </div>
     <div class="modal fade bs-example-modal-lg-new" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-md">
@@ -8,7 +8,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">Nueva Linea Producción</h4>
+                    <h4 class="modal-title" id="myModalLabel">Nueva Línea Producción</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal form-label-left input_mask" method="post" id="add" name="add">
@@ -23,7 +23,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripción <span class="required">*</span>
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                              <textarea name="description" class="date-picker form-control col-md-7 col-xs-12" placeholder="Linea de Producción" required></textarea>
+                              <textarea name="description" class="date-picker form-control col-md-7 col-xs-12" placeholder="Línea de Producción" required></textarea>
                             </div>
                         </div>
                         <div class="ln_solid"></div>

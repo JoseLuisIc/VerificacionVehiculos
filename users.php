@@ -105,9 +105,15 @@ $( "#upd_user" ).submit(function( event ) {
             var name = $("#name"+id).val();
             var email = $("#email"+id).val();
             var status = $("#status"+id).val();
+            var username = $("#username"+id).val();
+            var phone = $("#phone"+id).val();
+            var kind_user = $("#kind"+id).val();
             $("#mod_id").val(id);
             $("#mod_name").val(name);
             $("#mod_email").val(email);
             $("#mod_status").val(status);
+            $("#mod_username").val(username);
+            $("#mod_phone").val(phone);
+            $("#mod_kinduser").val(kind_user);
         }
 </script>
