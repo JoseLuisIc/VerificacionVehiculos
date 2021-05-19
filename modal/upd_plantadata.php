@@ -1,9 +1,38 @@
+<script type="text/javascript">
+function PasarValorUPD()
+{
+      let prodest_id = document.getElementById("mod_prodest_id").value;
+      let prodreal_id = document.getElementById("mod_prodreal_id").value;
+      let eficiencia_id = Math.round((prodreal_id/prodest_id)*100);
+      document.getElementById("mod_eficiencia_id").value = eficiencia_id;
+}
+  //eventini_id
+  //eventfin_id
+function CalculaMinutosUPD() {
+  //alert("ok");
+  let inicio = "2021/05/13 "+document.getElementById("mod_eventini_id").value;
+  let fin = "2021/05/13 "+document.getElementById("mod_eventfin_id").value;
+  var startTime = new Date(inicio); 
+  var endTime = new Date(fin);
+  var difference = endTime.getTime() - startTime.getTime(); // This will give difference in milliseconds
+  var resultInMinutes = Math.round(difference / 60000);
+  document.getElementById("mod_tiempomin_id").value = resultInMinutes;
+}
+</script>
+
 <?php
     $projects =mysqli_query($con, "select * from project");
     $priorities =mysqli_query($con, "select * from priority");
     $statuses =mysqli_query($con, "select * from status");
     $kinds =mysqli_query($con, "select * from kind");
     $categories =mysqli_query($con, "select * from category");
+    $paises =mysqli_query($con, "select * from pais");
+    $plantas =mysqli_query($con, "select * from planta");
+    $lineas =mysqli_query($con, "select * from linea");
+    $semanas =mysqli_query($con, "select * from semana");
+    $modelos =mysqli_query($con, "select * from modelo");
+    $scraps =mysqli_query($con, "select * from scrap");
+    $departamentos =mysqli_query($con, "select * from centro");
 ?>
     <!-- Modal -->
     <div class="modal fade bs-example-modal-lg-udp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -21,81 +50,233 @@
                         <input type="hidden" name="mod_id" id="mod_id">
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tipo
+                        <!-- Neri Start -->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pais">País                                      <!--Pais label-->
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="form-control" name="kind_id" required id="mod_kind_id">
-                                      <?php foreach($kinds as $p):?>
+                                <select class="form-control" name="pais_id" id="mod_pais_id" >
+                                        <option selected="" value="">-- Selecciona --</option>
+                                        <?php foreach($paises as $p):?>
                                         <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
-                                      <?php endforeach; ?>
+                                        <?php endforeach; ?>
                                 </select>
                             </div>
+                            
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Titulo<span class="required">*</span></label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                              <input type="text" name="title" class="form-control" placeholder="Titulo" id="mod_title" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripción <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="plantas">Planta                                      <!--planta label-->
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                              <textarea name="description" id="mod_description" class="form-control col-md-7 col-xs-12" required></textarea>
+                                <select class="form-control" name="planta_id" id="mod_planta_id">
+                                        <option selected="" value="">-- Selecciona --</option>
+                                        <?php foreach($plantas as $p):?>
+                                        <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
+                                        <?php endforeach; ?>
+                                </select>
                             </div>
+                            
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Proyecto
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="project">Proyecto                                  <!--Proyectoi label-->
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="form-control" name="project_id" required id="mod_project_id">
-                                    <option selected="" value="">-- Selecciona --</option>
+                                <select class="form-control" name="project_id" id="mod_project_id">
+                                      <option selected="" value="">-- Selecciona --</option>
                                       <?php foreach($projects as $p):?>
                                         <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
                                       <?php endforeach; ?>
                                 </select>
                             </div>
+                            
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Categoria
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="linea">Lineas de Producción                        <!--lineas de produccion label-->
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="form-control" name="category_id" required id="mod_category_id">
+                                <select class="form-control" name="linea_id" id="mod_linea_id" >
+                                        <option selected="" value="">-- Selecciona --</option>
+                                      <?php foreach($lineas as $p):?>
+                                        <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
+                                      <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">                                                                                                 <!--Dia fecha-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Día<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="date" name="dia_id" class="form-control" id="mod_dia_id" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="turno">Turno                                     <!--Turno label-->
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select class="form-control" name="turno_id" id="mod_turno_id" >
                                     <option selected="" value="">-- Selecciona --</option>
                                       <?php foreach($categories as $p):?>
                                         <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
                                       <?php endforeach; ?>
                                 </select>
                             </div>
+                            
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Prioridad
-                            </label>
+                        <div class="form-group">                                                                                                 <!--Semana Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Semana<span class="required">*</span></label>               
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="form-control" name="priority_id" required id="mod_priority_id">
+                                <select class="form-control" name="semana_id" id="mod_semana_id" >
                                     <option selected="" value="">-- Selecciona --</option>
-                                  <?php foreach($priorities as $p):?>
-                                    <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
-                                  <?php endforeach; ?>
+                                      <?php foreach($semanas as $p):?>
+                                        <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
+                                      <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
+
+                        <div class="form-group">                                                                                                 <!--Hora Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Inicio Turno<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input  type="time" name="horaini_id" class="form-control" id="mod_horaini_id" placeholder="Hora" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">                                                                                                 <!--Hora Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Fin Turno<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input  type="time" name="horafin_id" class="form-control" id="mod_horafin_id" placeholder="Hora" >
+                            </div>
+                        </div>
+
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Estado
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="modelo">Modelo                                     <!--modelo label-->
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select  class="form-control" name="status_id" required id="mod_status_id">
+                                <select class="form-control" name="modelo_id" id="mod_modelo_id">
                                     <option selected="" value="">-- Selecciona --</option>
-                                  <?php foreach($statuses as $p):?>
-                                    <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
-                                  <?php endforeach; ?>
+                                      <?php foreach($modelos as $p):?>
+                                        <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
+                                      <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
+
+                        <div class="form-group">                                                                                                 <!--STD(SEG) Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">STD (seg)<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="number" id="mod_stdseg_id" name="stdseg_id" class="form-control" placeholder="STD (seg)" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">                                                                                                 <!--Produccion estimada Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Producción Estimada<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="number" id="mod_prodest_id" name="prodest_id" class="form-control" placeholder="Producción Estimada" >
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">                                                                                                 <!--Produccion Real Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Producción Real<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input onkeyup="PasarValorUPD();"  type="number" name="prodreal_id" id="mod_prodreal_id" class="form-control" placeholder="Producción Real" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">                                                                                                 <!--Eficiencia Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Eficiencia %<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input readonly type="number" min="0"  max="10000" id="mod_eficiencia_id" name="eficiencia_id" class="form-control" placeholder="Eficiencia %" >
+                            </div>
+                        </div>
+
+                       
+                        <div class="form-group">                                                                                                 <!--Piezas Malas scarp Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Piezas Malas(SCRAP)<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="number" name="piezasmalas_id" id="mod_piezasmalas_id" class="form-control" placeholder="Piezas Malas (scrap)" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="scrap">Código Scrap                                     <!--Código scarp label-->
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select class="form-control" name="scrap_id" id="mod_scrap_id" >
+                                    <option selected="" value="">-- Selecciona --</option>
+                                      <?php foreach($scraps as $p):?>
+                                        <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
+                                      <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripción scarp <span class="required">*</span>              <!--Descripcion scarp-->
+                            </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <textarea name="descscrap_id" id="mod_descscrap_id" class="form-control col-md-7 col-xs-12"  placeholder="Descripción"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">                                                                                                 <!--Costo/STD Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo/STD<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="number" min="0" step="any" id="mod_costostd_id" name="costostd_id" class="form-control" placeholder="Costo/STD" >
+                            </div>
+                        </div>               
+
+                        <div class="form-group">                                                                                                 <!--Costo total de produccion Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo Total de producción<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="number" min="0" step="any" id="mod_costotalprod_id" name="costotalprod_id" class="form-control" placeholder="$$$" >
+                            </div>
+                        </div>      
+
+                        <div class="form-group">                                                                                                 <!--Tiempo caido en minutos campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tiempo Caído(Minutos)<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input readonly  type="number" min="0" step="any"  id="mod_tiempomin_id" name="tiempomin_id" class="form-control" placeholder="Tiempo Caído" >
+                            </div>
+                        </div>      
+
+                        <div class="form-group">                                                                                                 <!--Inicio del evento Fecha-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Hora Inicial del evento<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="time" name="eventini_id" id="mod_eventini_id" class="form-control" placeholder="Inicio" >
+                            </div>
+                        </div>      
+                        
+                        <div class="form-group">                                                                                                 <!--Evento Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Evento <span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="text" name="eventdescp_id" id="mod_eventdescp_id" class="form-control" placeholder="Descripción del Evento" >
+                            </div>
+                        </div>      
+
+                        <div class="form-group">                                                                                                 <!--Departamento Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Departamento <span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select class="form-control" name="depa_id" id="mod_depa_id" >
+                                    <option selected="" value="">-- Selecciona --</option>
+                                      <?php foreach($departamentos as $p):?>
+                                        <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
+                                      <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>  
+
+                        <div class="form-group">                                                                                                 <!--Hora final Campo-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Hora Final del Evento<span class="required">*</span></label>               
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="time" onchange="CalculaMinutosUPD();" name="eventfin_id" id="mod_eventfin_id" class="form-control" placeholder="Hora final" >
+                            </div>
+                        </div>  
+                        
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                              <button id="upd_data" type="submit" class="btn btn-success">Guardar</button>
+                              <button id="upd_data" type="submit" class="btn btn-success">Actualizar</button>
                             </div>
                         </div>
                     </form>                

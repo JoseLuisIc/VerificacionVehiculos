@@ -1,4 +1,4 @@
-<script>
+<script type="text/javascript">
 
 function PasarValor()
 {
@@ -7,8 +7,7 @@ function PasarValor()
       let eficiencia_id = Math.round((prodreal_id/prodest_id)*100);
       document.getElementById("eficiencia_id").value = eficiencia_id;
 }
-  //eventini_id
-  //eventfin_id
+
 function CalculaMinutos() {
   //alert("ok");
   let inicio = "2021/05/13 "+document.getElementById("eventini_id").value;
@@ -62,6 +61,7 @@ function CalculaMinutos() {
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <select class="form-control" name="pais_id" >
+                                      <option selected="" value="">-- Selecciona --</option>
                                       <?php foreach($paises as $p):?>
                                         <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
                                       <?php endforeach; ?>
@@ -74,6 +74,7 @@ function CalculaMinutos() {
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <select class="form-control" name="planta_id" >
+                                      <option selected="" value="">-- Selecciona --</option>
                                       <?php foreach($plantas as $p):?>
                                         <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
                                       <?php endforeach; ?>
@@ -86,6 +87,7 @@ function CalculaMinutos() {
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <select class="form-control" name="project_id" >
+                                      <option selected="" value="">-- Selecciona --</option>
                                       <?php foreach($projects as $p):?>
                                         <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
                                       <?php endforeach; ?>
@@ -98,6 +100,7 @@ function CalculaMinutos() {
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <select class="form-control" name="linea_id" >
+                                      <option selected="" value="">-- Selecciona --</option>
                                       <?php foreach($lineas as $p):?>
                                         <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
                                       <?php endforeach; ?>
@@ -117,6 +120,7 @@ function CalculaMinutos() {
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <select class="form-control" name="turno_id" >
+                                      <option selected="" value="">-- Selecciona --</option>
                                       <?php foreach($categories as $p):?>
                                         <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
                                       <?php endforeach; ?>
@@ -128,6 +132,7 @@ function CalculaMinutos() {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Semana<span class="required">*</span></label>               
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <select class="form-control" name="semana_id" >
+                                      <option selected="" value="">-- Selecciona --</option>
                                       <?php foreach($semanas as $p):?>
                                         <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
                                       <?php endforeach; ?>
@@ -154,6 +159,7 @@ function CalculaMinutos() {
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <select class="form-control" name="modelo_id" >
+                                      <option selected="" value="">-- Selecciona --</option>
                                       <?php foreach($modelos as $p):?>
                                         <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
                                       <?php endforeach; ?>
@@ -202,6 +208,7 @@ function CalculaMinutos() {
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <select class="form-control" name="scrap_id" >
+                                      <option selected="" value="">-- Selecciona --</option>
                                       <?php foreach($scraps as $p):?>
                                         <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
                                       <?php endforeach; ?>
@@ -257,6 +264,7 @@ function CalculaMinutos() {
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Departamento <span class="required">*</span></label>               
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <select class="form-control" name="depa_id" >
+                                      <option selected="" value="">-- Selecciona --</option>
                                       <?php foreach($departamentos as $p):?>
                                         <option value="<?php echo $p['id']; ?>"><?php echo $p['name']; ?></option>
                                       <?php endforeach; ?>
@@ -267,7 +275,7 @@ function CalculaMinutos() {
                         <div class="form-group">                                                                                                 <!--Hora final Campo-->
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Hora Final del Evento<span class="required">*</span></label>               
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                              <input type="time" onchange="CalculaMinutos();" name="eventfin_id" id="eventfin_id" class="form-control" placeholder="Hora final" >
+                              <input require type="time" onchange="CalculaMinutos();" name="eventfin_id" id="eventfin_id" class="form-control" placeholder="Hora final" >
                             </div>
                         </div>  
 

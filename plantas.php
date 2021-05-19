@@ -25,7 +25,7 @@
                         </div>
                         
                         <!-- Form search -->
-                        <form class="form-horizontal" role="form" id="ingresos">
+                        <form class="form-horizontal" role="form" id="planta_buscar">
                             <div class="form-group row">
                                 <label for="q" class="col-md-2 control-label">Nombre</label>
                                 <div class="col-md-4">

@@ -60,7 +60,7 @@
 		$eventfin = $_POST["eventfin_id"];//25
 
 		//Validar después su utilidad:
-		$kind_id = $_SESSION["kind"];
+		$kind_id = $_SESSION["kind_id"];
 		$priority_id = 1;	
 		$status_id = 1;
 		//$sql="insert into ticket (title,description,category_id,project_id,priority_id,user_id,status_id,kind_id,created_at) value (\"$title\",\"$description\",\"$category_id\",\"$project_id\",$priority_id,$user_id,$status_id,$kind_id,$created_at)";
@@ -132,12 +132,12 @@
 		//var_dump($sql);
 		$query_new_insert = mysqli_query($con,$sql);
 			if ($query_new_insert){
-				$messages[] = "Tu ticket ha sido ingresado satisfactoriamente.";
+				$messages[] = "Tus Datos han sido ingresado satisfactoriamente.";
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
 			}
 		} else {
-			$errors []= "Error desconocido.";
+			$errors []= "Error desconocido. Contacta al administrador.";
 		}
 		
 		if (isset($errors)){

@@ -25,7 +25,7 @@
                         </div>
 
                         <!-- form search -->
-                        <form class="form-horizontal" role="form" id="datos_cotizacion">
+                        <form class="form-horizontal" role="form" id="user_buscar">
                             <div class="form-group row">
                                 <label for="q" class="col-md-2 control-label">Nombre o E-mail</label>
                                 <div class="col-md-4">

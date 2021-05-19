@@ -30,15 +30,109 @@
     if($action == 'ajax'){
         // escaping, additionally removing everything that could be (html/javascript-) code
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-         $aColumns = array('title');//Columnas de busqueda
+         $t = mysqli_real_escape_string($con,(strip_tags($_REQUEST['turno_id_ajax'], ENT_QUOTES)));
+         $q2 = mysqli_real_escape_string($con,(strip_tags($_REQUEST['dia_ajax'], ENT_QUOTES)));
+         $paiz = mysqli_real_escape_string($con,(strip_tags($_REQUEST['pais_id_ajax'], ENT_QUOTES))); 
+         $plan = mysqli_real_escape_string($con,(strip_tags($_REQUEST['planta_ud'], ENT_QUOTES))); 
+         
+         $proj = mysqli_real_escape_string($con,(strip_tags($_REQUEST['project_busq'], ENT_QUOTES)));
+         $depaz = mysqli_real_escape_string($con,(strip_tags($_REQUEST['departamento_busq'], ENT_QUOTES)));
+         $line = mysqli_real_escape_string($con,(strip_tags($_REQUEST['linea_busq'], ENT_QUOTES)));
+         $modelo_busq = mysqli_real_escape_string($con,(strip_tags($_REQUEST['modelo_busq'], ENT_QUOTES)));
+         $q2 = $q2.' 00:00:00';
+         if ( $_GET['q'] != "" )
+            $aColumns = array('event','desc_scrap');//Columnas de busqueda
+
+        if ( $_GET['dia_ajax'] != "" )
+            $aColumns = array('dia');//Columnas de busqueda
+
+        if ( $_GET['turno_id_ajax'] != "" )
+            $aColumns = array('turno_id');//Columnas de busqueda
+
+        if ( $_GET['pais_id_ajax'] != "" )
+            $aColumns = array('pais_id');//Columnas de busqueda
+
+        if ( $_GET['planta_ud'] != "" )
+            $aColumns = array('planta_id');//Columnas de busqueda
+
+        if ( $_GET['project_busq'] != "" )
+            $aColumns = array('project_id');//Columnas de busqueda
+
+        if ( $_GET['departamento_busq'] != "" )
+            $aColumns = array('centro_id');//Columnas de busqueda
+
+        if ( $_GET['linea_busq'] != "" )
+            $aColumns = array('linea_id');//Columnas de busqueda
+
+        if ( $_GET['modelo_busq'] != "" )
+            $aColumns = array('modelo_id');//Columnas de busqueda
+
+
+        if ( $_GET['q'] != "" && $_GET['dia_ajax'] != "" )
+            $aColumns = array('event','desc_scrap','dia');//Columnas de busqueda
+        
+        if ( $_GET['pais_id_ajax'] != "" && $_GET['dia_ajax'] != "" )
+            $aColumns = array('pais_id','dia');//Columnas de busqueda
+        
+        if ( $_GET['q'] != "" && $_GET['pais_id_ajax'] != "" )
+            $aColumns = array('event','desc_scrap','pais_id');//Columnas de busqueda
+        
+        if ( $_GET['q'] != "" && $_GET['dia_ajax'] != "" && $_GET['pais_id_ajax'] != ""  )
+            $aColumns = array('event','desc_scrap','dia','pais_id');//Columnas de busqueda
+
+        if ( $_GET['turno_id_ajax'] != "" && $_GET['dia_ajax'] != "" )
+            $aColumns = array('turno_id','dia');//Columnas de busqueda
+        
+        if ( $_GET['turno_id_ajax'] != "" && $_GET['dia_ajax'] != "" && $_GET['pais_id_ajax'] != "" )
+            $aColumns = array('turno_id','dia','pais_id');//Columnas de busqueda
+        
+        if ( $_GET['q'] != "" && $_GET['turno_id_ajax'] != "" )
+            $aColumns = array('event','desc_scrap','turno_id');//Columnas de busqueda
+
+        if ( $_GET['q'] != "" && $_GET['dia_ajax'] != "" && $_GET['turno_id_ajax'] != "" )
+            $aColumns = array('event','desc_scrap','dia','turno_id');//Columnas de busqueda
+        
+        if ( $_GET['q'] != "" && $_GET['dia_ajax'] != "" && $_GET['turno_id_ajax'] != "" && $_GET['pais_id_ajax'] != "" )
+            $aColumns = array('event','desc_scrap','dia','turno_id','pais_id');//Columnas de busqueda
+         
          $sTable = "plantadata";
          $sWhere = "";
-        if ( $_GET['q'] != "" )
+        if ( $_GET['q'] != "" || 
+        $_GET['dia_ajax'] != "" || 
+        $_GET['turno_id_ajax'] != "" || 
+        $_GET['pais_id_ajax'] != "" || 
+        $_GET['planta_ud'] != "" ||
+        $_GET['project_busq'] != "" ||
+        $_GET['departamento_busq'] != "" ||
+        $_GET['linea_busq'] != "" ||
+        $_GET['modelo_busq'] != "" )
         {
             $sWhere = "WHERE (";
             for ( $i=0 ; $i<count($aColumns) ; $i++ )
             {
-                $sWhere .= $aColumns[$i]." LIKE '%".$q."%' OR ";
+                if($_GET['q'] != "")
+                    $sWhere .= $aColumns[$i]." LIKE '%".$q."%' OR ";
+                if($_GET['dia_ajax'])
+                    $sWhere .= $aColumns[$i]." LIKE '%".$q2."%' OR ";
+                if($_GET['turno_id_ajax'])
+                    $sWhere .= $aColumns[$i]." LIKE '%".$t."%' OR ";
+                if($_GET['pais_id_ajax'])
+                    $sWhere .= $aColumns[$i]." LIKE '%".$paiz."%' OR ";
+                if($_GET['planta_ud'])
+                    $sWhere .= $aColumns[$i]." LIKE '%".$plan."%' OR ";
+
+                if ( $_GET['project_busq'] != "" )
+                    $sWhere .= $aColumns[$i]." LIKE '%".$proj."%' OR ";
+
+                if ( $_GET['departamento_busq'] != "" )
+                    $sWhere .= $aColumns[$i]." LIKE '%".$depaz."%' OR ";
+        
+                if ( $_GET['linea_busq'] != "" )
+                    $sWhere .= $aColumns[$i]." LIKE '%".$line."%' OR ";
+
+                if ( $_GET['modelo_busq'] != "" )
+                    $sWhere .= $aColumns[$i]." LIKE '%".$modelo_busq."%' OR ";
+
             }
             $sWhere = substr_replace( $sWhere, "", -3 );
             $sWhere .= ')';
@@ -51,6 +145,8 @@
         $adjacents  = 4; //gap between pages after number of adjacents
         $offset = ($page - 1) * $per_page;
         //Count the total number of row in your table*/
+        $qery = "SELECT count(*) AS numrows FROM $sTable  $sWhere";
+        //var_dump($qery); //Imprime la consulta
         $count_query   = mysqli_query($con, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
         $row= mysqli_fetch_array($count_query);
         $numrows = $row['numrows'];
@@ -125,8 +221,12 @@
                             $project_id=$r['project_id'];
                             $linea_id=$r['linea_id'];
 
+                            
+                            //var_dump($date1);
+
                             $diaAux=date_create($r['dia']);
                             $dia = date_format($diaAux, 'd/m/Y');
+                            $date1 = date_format($diaAux, 'Y-m-d');
 
                             $turno_id=$r['category_id'];
                             $semana_id=$r['semana_id'];
@@ -136,6 +236,8 @@
                             /*Doy formato para tiempo inicio y fin */
                             $timeturno_ini = date_format($timeini, 'g:i A');
                             $timeturno_fin = date_format($timefin, 'g:i A');
+                            $timeturno_ini1 = date_format($timeini, 'H:i');
+                            $timeturno_fin2 = date_format($timefin, 'H:i');
 
                             $modelo_id=$r['modelo_id'];
                             $scrap_id = $r['scrap_id'];
@@ -157,6 +259,10 @@
                             $event_ini=date('g:i A', strtotime($r['event_ini']));
                             $event_fin=date('g:i A', strtotime($r['event_fin']));
 
+                            $timeini_1=date_create($r['event_ini']);
+                            $timefin_2=date_create($r['event_fin']);
+                            $event_ini1 = date_format($timeini_1, 'H:i');
+                            $event_fin2 = date_format($timefin_2, 'H:i');
 
                             $event=$r['event'];
                             $departamento=$r['centro_id'];
@@ -235,14 +341,40 @@
                     <input type="hidden" value="<?php echo $id;?>" id="id<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $pais_id;?>" id="pais_id<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $planta_id;?>" id="planta_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $project_id;?>" id="project_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $linea_id;?>" id="linea_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $dia;?>" id="dia_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $date1;?>" id="dia_id_aux<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $turno_id;?>" id="turno_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $semana_id;?>" id="semana_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $timeturno_ini1;?>" id="horaini_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $timeturno_fin2;?>" id="horafin_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $modelo_id;?>" id="modelo_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $std_seg;?>" id="stdseg_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $produc_estimada;?>" id="prodest_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $produc_real;?>" id="prodreal_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $eficiencia;?>" id="eficiencia_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $piezas_malas;?>" id="piezasmalas_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $scrap_id;?>" id="scrap_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $desc_scrap;?>" id="descscrap_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $costo_std;?>" id="costostd_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $costo_total_prod;?>" id="costotalprod_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $tiempo_caida_min;?>" id="tiempomin_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $event_ini1;?>" id="eventini_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $event;?>" id="eventdescp_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $departamento;?>" id="depa_id<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $event_fin2;?>" id="eventfin_id<?php echo $id;?>">
+                    
 
-                    <!-- me obtiene los datos -->
+                    
+
+                    <!-- me obtiene los datos 
                     <input type="hidden" value="<?php echo $kind_id;?>" id="kind_id<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $project_id;?>" id="project_id<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $category_id;?>" id="category_id<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $priority_id;?>" id="priority_id<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $status_id;?>" id="status_id<?php echo $id;?>">
-
+                    -->
 
                     <tr class="even pointer">
                         <td><?php echo $name_pais;?></td>
@@ -273,8 +405,8 @@
                         <td><?php echo $updated_at;?></td>
 
                         <td ><span class="pull-right">
-                        <a href="#" class='btn btn-default' title='Editar producto' onclick="obtener_datos('<?php echo $id;?>');" data-toggle="modal" data-target=".bs-example-modal-lg-udp"><i class="glyphicon glyphicon-edit"></i></a> 
-                        <a href="#" class='btn btn-default' title='Borrar producto' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
+                        <a href="#" class='btn btn-default' title='Editar Dato' onclick="obtener_datos('<?php echo $id;?>');" data-toggle="modal" data-target=".bs-example-modal-lg-udp"><i class="glyphicon glyphicon-edit"></i></a> 
+                        <a href="#" class='btn btn-default' title='Borrar Dato' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
                     </tr>
                 <?php
                     } //end while
