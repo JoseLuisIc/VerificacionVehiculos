@@ -14,7 +14,7 @@
                     <form class="form-horizontal form-label-left input_mask" method="post" id="add" name="add">
                         <div id="result"></div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre<span class="required">*</span></label>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de la Planta<span class="required">*</span></label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                               <input type="text" required name="name" class="form-control" placeholder="Planta">
                             </div>
@@ -24,6 +24,24 @@
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                               <textarea name="description" class="date-picker form-control col-md-7 col-xs-12" placeholder="Planta México" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ciudad<span class="required">*</span></label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="text" required name="ciudad" class="form-control" placeholder="Ciudad">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Estado<span class="required">*</span></label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="text" required name="estado" class="form-control" placeholder="Estado">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Codigo Postal<span class="required">*</span></label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="text" required name="cp" class="form-control" placeholder="CP">
                             </div>
                         </div>
                         <div class="ln_solid"></div>

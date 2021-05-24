@@ -65,6 +65,9 @@
                     <tr class="headings">
                         <th class="column-title">Nombre </th>
                         <th class="column-title">Descripción </th>
+                        <th class="column-title">Ciudad </th>
+                        <th class="column-title">Estado </th>
+                        <th class="column-title">CP </th>
                         <th class="column-title no-link last"><span class="nobr"></span></th>
                     </tr>
                 </thead>
@@ -74,15 +77,24 @@
                             $id=$r['id'];
                             $name=$r['name'];
                             $description=$r['description'];
+                            $ciudad=$r['ciudad'];
+                            $estado=$r['estado'];
+                            $cp=$r['cp'];
                 ?>
                     <input type="hidden" value="<?php echo $id;?>" id="id<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $description;?>" id="description<?php echo $id;?>">
                     <input type="hidden" value="<?php echo $name;?>" id="name<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $ciudad;?>" id="ciudad<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $estado;?>" id="estado<?php echo $id;?>">
+                    <input type="hidden" value="<?php echo $cp;?>" id="cp<?php echo $id;?>">
 
 
                     <tr class="even pointer">
                         <td style="width: 200px"><?php echo $name;?></td>
                         <td><?php echo $description;?></td>
+                        <td><?php echo $ciudad;?></td>
+                        <td><?php echo $estado;?></td>
+                        <td><?php echo $cp;?></td>
                         <td style="width: 150px"><span class="pull-right">
                         <a href="#" class='btn btn-default' title='Editar Planta' onclick="obtener_datos('<?php echo $id;?>');" data-toggle="modal" data-target=".bs-example-modal-lg-udp"><i class="glyphicon glyphicon-edit"></i></a> 
                         <a href="#" class='btn btn-default' title='Borrar Planta' onclick="eliminar('<?php echo $id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>

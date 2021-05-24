@@ -2,10 +2,16 @@
 	session_start();
 	/*Inicia validacion del lado del servidor*/
 	if (empty($_POST['name'])) {
-           $errors[] = "Nombre vacío";
+           $errors[] = "Nombre está vacío";
         } else if (empty($_POST['description'])){
-			$errors[] = "Description vacío";
-		} else if (
+			$errors[] = "Descripción está vacío";
+		} else if (empty($_POST['estado'])){
+			$errors[] = "Estado está vacío";
+		}else if (empty($_POST['cp'])){
+			$errors[] = "Codigo Postal está vacío";
+		}else if (empty($_POST['ciudad'])){
+			$errors[] = "Codigo Postal está vacío";
+		}else if (
 			!empty($_POST['name']) &&
 			!empty($_POST['description'])
 		){
@@ -14,9 +20,13 @@
 
 		$name = $_POST["name"];
 		$description = $_POST["description"];
+		$estado = $_POST["estado"];
+		$cp = $_POST["cp"];
+		$ciudad = $_POST["ciudad"];
 
 
-		$sql="insert into planta (name, description) value (\"$name\",\"$description\")";
+		$sql="insert into planta (name, description, ciudad,estado, cp) value (\"$name\",\"$description\",\"$ciudad\",\"$estado\",\"$cp\")";
+		var_dump($sql);
 		$query_new_insert = mysqli_query($con,$sql);
 			if ($query_new_insert){
 				$messages[] = "Tu proyecto ha sido ingresado satisfactoriamente.";

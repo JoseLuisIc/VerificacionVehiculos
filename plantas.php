@@ -104,9 +104,15 @@ $( "#upd" ).submit(function( event ) {
     function obtener_datos(id){
             var description = $("#description"+id).val();
             var name = $("#name"+id).val();
+            var ciudad = $("#ciudad"+id).val();
+            var estado = $("#estado"+id).val();
+            var cp = $("#cp"+id).val();
             $("#mod_id").val(id);
             $("#mod_description").val(description);
             $("#mod_name").val(name);
+            $("#mod_ciudad").val(ciudad);
+            $("#mod_estado").val(estado);
+            $("#mod_cp").val(cp);
         }
 
 

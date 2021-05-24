@@ -218,7 +218,7 @@ function CalculaMinutos() {
 
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripción scarp <span class="required">*</span>              <!--Descripcion scarp-->
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripción Scrap <span class="required">*</span>              <!--Descripcion scarp-->
                             </label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                               <textarea name="descscrap_id" class="form-control col-md-7 col-xs-12"  placeholder="Descripción"></textarea>

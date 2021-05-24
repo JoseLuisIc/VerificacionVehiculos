@@ -24,6 +24,24 @@
                               <textarea name="mod_description" id="mod_description" placeholder="Descripción Planta" class="date-picker form-control col-md-7 col-xs-12" required placeholder="Descripción"></textarea>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ciudad<span class="required">*</span></label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="text" required name="mod_ciudad" id="mod_ciudad" class="form-control" placeholder="Ciudad">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Estado<span class="required">*</span></label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="text" required name="mod_estado"  id="mod_estado" class="form-control" placeholder="Estado">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Codigo Postal<span class="required">*</span></label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                              <input type="text" required name="mod_cp"  id="mod_cp" class="form-control" placeholder="CP">
+                            </div>
+                        </div>
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">

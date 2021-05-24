@@ -6,6 +6,12 @@
 			$errors[] = "Descripción vacío";
 		} else if (empty($_POST['mod_name'])){
 			$errors[] = "Nombre Vacio";
+		}else if (empty($_POST['mod_estado'])){
+			$errors[] = "Estado Vacio";
+		}else if (empty($_POST['mod_cp'])){
+			$errors[] = "Cp Vacio";
+		}else if (empty($_POST['mod_ciudad'])){
+			$errors[] = "Ciudad Vacio";
 		} else if (
 			!empty($_POST['mod_name']) &&
 			!empty($_POST['mod_description'])
@@ -15,10 +21,12 @@
 
 		$name = $_POST["mod_name"];
 		$description = $_POST["mod_description"];
-		
+		$estado = $_POST["mod_estado"];
+		$cp = $_POST["mod_cp"];
+		$ciudad = $_POST["mod_ciudad"];
 		$id=$_POST['mod_id'];
 
-		$sql="update planta set name=\"$name\",description=\"$description\" where id=$id";
+		$sql="update planta set name=\"$name\",description=\"$description\",estado=\"$estado\",cp=\"$cp\",ciudad=\"$ciudad\" where id=$id";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "EL proyecto ha sido actualizado satisfactoriamente.";
