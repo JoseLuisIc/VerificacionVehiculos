@@ -54,6 +54,9 @@
 		$costostd = $_POST["costostd_id"];//19
 		$costototalprd = $_POST["costotalprod_id"];//20
 		$tiempomin = $_POST["tiempomin_id"];//21
+		if(empty($tiempomin)){
+			$tiempomin = 0;
+		}
 		$eventini = $_POST["eventini_id"];//22
 		$eventdescp = $_POST["eventdescp_id"];//23
 		$departamento = $_POST["depa_id"];//24
@@ -131,6 +134,7 @@
 		\"$eventdescp\")";
 		//var_dump($sql);
 		$query_new_insert = mysqli_query($con,$sql);
+		var_dump($sql);
 			if ($query_new_insert){
 				$messages[] = "Tus Datos han sido ingresado satisfactoriamente.";
 			} else{

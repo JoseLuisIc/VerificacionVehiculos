@@ -8,6 +8,14 @@ function PasarValor()
       document.getElementById("eficiencia_id").value = eficiencia_id;
 }
 
+function calculaCostoProd()
+{
+      let piezasmalas_id = document.getElementById("piezasmalas_id").value;
+      let costostd_id = document.getElementById("costostd_id").value;
+      let costotalprod_id = piezasmalas_id*costostd_id;
+      document.getElementById("costotalprod_id").value = costotalprod_id;
+}
+
 function CalculaMinutos() {
   //alert("ok");
   let inicio = "2021/05/13 "+document.getElementById("eventini_id").value;
@@ -199,7 +207,7 @@ function CalculaMinutos() {
                         <div class="form-group">                                                                                                 <!--Piezas Malas scarp Campo-->
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Piezas Malas(SCRAP)<span class="required">*</span></label>               
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                              <input type="number" name="piezasmalas_id" class="form-control" placeholder="Piezas Malas (scrap)" >
+                              <input type="number" name="piezasmalas_id" id="piezasmalas_id" class="form-control" placeholder="Piezas Malas (scrap)" >
                             </div>
                         </div>
 
@@ -228,14 +236,14 @@ function CalculaMinutos() {
                         <div class="form-group">                                                                                                 <!--Costo/STD Campo-->
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo/STD<span class="required">*</span></label>               
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                              <input type="number" min="0" step="any" name="costostd_id" class="form-control" placeholder="Costo/STD" >
+                              <input  type="number" onkeyup="calculaCostoProd();"  step="0.01" name="costostd_id" id="costostd_id" class="form-control" placeholder="Costo/STD" >
                             </div>
-                        </div>               
+                        </div>
 
                         <div class="form-group">                                                                                                 <!--Costo total de produccion Campo-->
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo Total de producción<span class="required">*</span></label>               
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Costo Total de Producción<span class="required">*</span></label>               
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                              <input type="number" min="0" step="any" name="costotalprod_id" class="form-control" placeholder="$$$" >
+                              <input readonly type="text" name="costotalprod_id" id="costotalprod_id" class="form-control" placeholder="$$$" >
                             </div>
                         </div>      
 
