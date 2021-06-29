@@ -45,11 +45,10 @@
                     <li class="<?php if(isset($active11)){echo $active11;}?>">
                         <a href="centros.php"><i class="fa fa-home"></i> Departamentos</a>
                     </li>
-                    <!--
+                    
                     <li class="<?php if(isset($active12)){echo $active12;}?>">
                         <a href="grafico_index.php"><i class="fa fa-area-chart"></i> Estadísticas</a>
                     </li>
-                    -->
                     <!--
                     <li class="<?php if(isset($active13)){echo $active13;}?>">
                         <a href="about.php"><i class="fa fa-child"></i> Sobre Mi</a>
