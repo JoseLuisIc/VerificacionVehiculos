@@ -1,76 +1,53 @@
 <?php
-    session_start();
 
-    include "config/config.php";
+/**
+ * Front controller
+ *
+ * PHP version 7.0
+ */
 
-    if (isset($_SESSION['user_id']) && $_SESSION!==null) {
-       header("location: dashboard.php");
-    }
+/**
+ * Composer
+ */
 
-?>
+require __DIR__.'/vendor/autoload.php';
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+/**
+ * Error and Exception handling
+ */
+error_reporting(E_ALL);
+set_error_handler('Core\Error::errorHandler');
+set_exception_handler('Core\Error::exceptionHandler');
+/**
+ * Routing
+ */
+$router = new Core\Router();
 
-        <title>Iniciar Sesión </title>
+// Add the routes
+$router->add('', ['controller' => 'LoginController', 'action' => 'index']);
+$router->add('login', ['controller' => 'LoginController', 'action' => 'index']);
+$router->add('auth', ['controller' => 'LoginController', 'action' => 'login']);
+$router->add('logout', ['controller' => 'LoginController', 'action' => 'logout']);
+$router->add('dashboard', ['controller' => 'DashboardController', 'action' => 'index']);
+$router->add('plantadatas', ['controller' => 'PlantaDataController', 'action' => 'index']);
+$router->add('projects', ['controller' => 'ProjectController', 'action' => 'index']);
+$router->add('users', ['controller' => 'UserController', 'action' => 'index']);
+$router->add('paises', ['controller' => 'PaisController', 'action' => 'index']);
+$router->add('plantas', ['controller' => 'PlantaController', 'action' => 'index']);
+$router->add('scraps', ['controller' => 'ScrapController', 'action' => 'index']);
+$router->add('reports', ['controller' => 'ReportController', 'action' => 'index']);
+$router->add('modelos', ['controller' => 'ModeloController', 'action' => 'index']);
+$router->add('lineas', ['controller' => 'LineaController', 'action' => 'index']);
 
-        <!-- Bootstrap -->
-        <link href="css/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Font Awesome -->
-        <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- NProgress -->
-        <link href="css/nprogress/nprogress.css" rel="stylesheet">
-        <!-- Animate.css -->
-        <link href="css/animate.css/animate.min.css" rel="stylesheet">
+$router->add('centros', ['controller' => 'CentroController', 'action' => 'index']);
 
-        <!-- Custom Theme Style -->
-        <link href="css/custom.min.css" rel="stylesheet">
+$router->add('categorias', ['controller' => 'CategoryController', 'action' => 'index']);
+$router->add('graficas', ['controller' => 'GraficaController', 'action' => 'index']);
+$router->add('graficas/saveGrafic', ['controller' => 'GraficaController', 'action' => 'saveGrafic']);
+$router->add('graficas/datas', ['controller' => 'GraficaController', 'action' => 'datas']);
+$router->add('graficas/create', ['controller' => 'GraficaController', 'action' => 'create']);
+$router->add('incidencias', ['controller' => 'IncidenciaController', 'action' => 'index']);
 
-    </head>
-    <body class="login">
-        <div>
-            <a class="hiddenanchor" id="signup"></a>
-            <a class="hiddenanchor" id="signin"></a>
-            <div class="login_wrapper">
-                <div class="animate form login_form">
-                    <?php 
-                        $invalid=sha1(md5("contrasena y email invalido"));
-                        if (isset($_GET['invalid']) && $_GET['invalid']==$invalid) {
-                            echo "<div class='alert alert-danger alert-dismissible fade in' role='alert'>
-                                <strong>Error!</strong> Contraseña o correo Electrónico invalido
-                                </div>";
-                        }
-                    ?>
-                    <section class="login_content">
-                        <form action="action/login.php" method="post">
-                            <h1>Iniciar Sesión</h1>
-                            <div>
-                                <input type="text" name="email" class="form-control" placeholder="Correo Electrónico" required />
-                            </div>
-                            <div>
-                                <input type="password" name="password" class="form-control" placeholder="Contraseña" required/>
-                            </div>
-                            <div>
-                                <button type="submit" name="token" value="Login" class="btn btn-default">Iniciar Sesion</button>
-                                <a class="reset_pass" href="#">Olvidaste Tu contraseña?</a>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="separator">
-                                <div class="clearfix"></div>
-                                <br />
-                                <div>
-                                    <h1><i class="fa fa-car"></i> VVProd!</h1>
-                                </div>
-                            </div>
-                        </form>
-                    </section>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+$router->add('seguimieto_incidencias', ['controller' => 'IncidenciaController', 'action' => 'seguimiento']);
+$router->add('seguimiento_incidencias/create', ['controller' => 'IncidenciaController', 'action' => 'seguimientoCreate']);
+$router->dispatch($_SERVER['QUERY_STRING']);

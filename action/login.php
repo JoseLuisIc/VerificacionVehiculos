@@ -14,13 +14,14 @@
 	if ($row = mysqli_fetch_array($query)) {
 			
 				/*Aqui se añaden las variables globales de sesión*/
+				$_SESSION['admin'] = true;
 				$_SESSION['user_id'] = $row['id'];
 				$_SESSION['kind_id'] = $row['kind'];
 				/*Recuperar al tipo*/
 				$_SESSION['user_kind'] = $row['kind'];
 				$_SESSION['user_email']= $row['email'];
 				$_SESSION['user_phone']= $row['phone'];
-				header("location: ../dashboard.php");
+				header("location: ../dashboard");
 				
 		}else{
 			$invalid=sha1(md5("contrasena y email invalido"));
