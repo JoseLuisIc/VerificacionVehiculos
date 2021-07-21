@@ -7,4 +7,5 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond $1 !^(index.php|action|ajax|app|assets|imagenes|lib)
 RewriteRule ^(.*)$ index.php?$1 [L,QSA]
