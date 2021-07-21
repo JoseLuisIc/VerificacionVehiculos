@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '5bfa59587790426fddc036c6e59eee8379332b89',
+        'reference' => '097c0229085c532afd343dd90e159254640dd0d8',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '5bfa59587790426fddc036c6e59eee8379332b89',
+            'reference' => '097c0229085c532afd343dd90e159254640dd0d8',
             'dev_requirement' => false,
         ),
         'doctrine/inflector' => array(
@@ -71,6 +71,15 @@
             'install_path' => __DIR__ . '/../illuminate/macroable',
             'aliases' => array(),
             'reference' => '300aa13c086f25116b5f3cde3ca54ff5c822fb05',
+            'dev_requirement' => false,
+        ),
+        'illuminate/pagination' => array(
+            'pretty_version' => 'v8.50.0',
+            'version' => '8.50.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../illuminate/pagination',
+            'aliases' => array(),
+            'reference' => '88a1349752d84e1ee01ca74090b6619661584e76',
             'dev_requirement' => false,
         ),
         'illuminate/support' => array(

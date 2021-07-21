@@ -1,9 +1,10 @@
 {
     "require": {
         "twig/twig": "~3.0",
-        "illuminate/database": "^8.50",
         "symfony/twig-bridge": "^5.3",
-        "symfony/asset": "^5.3"
+        "symfony/asset": "^5.3",
+        "illuminate/database": "^8.50",
+        "illuminate/pagination": "^8.50"
     },
     "autoload": {
         "psr-4": {

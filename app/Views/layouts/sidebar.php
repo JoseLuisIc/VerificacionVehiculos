@@ -51,9 +51,11 @@
                     </li>
                     
                     <li class="<?php if(isset($active13)){echo $active13;}?>">
-                        <a href="incidencias"><i class="fa fa-child"></i> Incidencias</a>
+                        <a href="incidencias"><i class="fa fa-child"></i> Acciones</a>
                     </li>
-
+                    <li class="">
+                        <a href="diagrama"><i class="fa fa-child"></i> Diagrama</a>
+                    </li>
                 </ul>
             </div>
         </div><!-- /sidebar menu -->

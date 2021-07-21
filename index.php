@@ -11,16 +11,29 @@
  */
 
 require __DIR__.'/vendor/autoload.php';
+//$app = require __DIR__.'/bootstrap/app.php';
 
-/**
- * Error and Exception handling
- */
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request
+| through the kernel, and send the associated response back to
+| the client's browser allowing them to enjoy the creative
+| and wonderful application we have prepared for them.
+|
+*/
+
+//$app->run();
+
 error_reporting(E_ALL);
 set_error_handler('Core\Error::errorHandler');
 set_exception_handler('Core\Error::exceptionHandler');
 /**
  * Routing
  */
+
 $router = new Core\Router();
 
 // Add the routes
@@ -45,8 +58,11 @@ $router->add('categorias', ['controller' => 'CategoryController', 'action' => 'i
 $router->add('graficas', ['controller' => 'GraficaController', 'action' => 'index']);
 $router->add('graficas/saveGrafic', ['controller' => 'GraficaController', 'action' => 'saveGrafic']);
 $router->add('graficas/datas', ['controller' => 'GraficaController', 'action' => 'datas']);
+$router->add('graficas/grafic1', ['controller' => 'GraficaController', 'action' => 'grafic1']);
+$router->add('graficas/grafic2', ['controller' => 'GraficaController', 'action' => 'grafic2']);
 $router->add('graficas/create', ['controller' => 'GraficaController', 'action' => 'create']);
 $router->add('incidencias', ['controller' => 'IncidenciaController', 'action' => 'index']);
+$router->add('diagrama', ['controller' => 'DashboardController', 'action' => 'diagrama']);
 
 $router->add('seguimieto_incidencias', ['controller' => 'IncidenciaController', 'action' => 'seguimiento']);
 $router->add('seguimiento_incidencias/create', ['controller' => 'IncidenciaController', 'action' => 'seguimientoCreate']);

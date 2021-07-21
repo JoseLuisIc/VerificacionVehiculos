@@ -60,4 +60,12 @@ class DashboardController extends \Core\Controller
             'plantadata' => $plantadata
         ));
     }
+    public function diagramaAction()
+    {   
+        $id=$_SESSION['user_id'];
+        $user = User::findOrFail($id);
+        View::renderTemplate('Dashboard/diagrama.php',array(
+            'user'=>$user
+        ));
+    }
 }

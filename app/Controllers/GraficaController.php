@@ -6,6 +6,8 @@ use \Core\View;
 use App\Models\User;
 use App\Models\Incidencia;
 use App\Models\GraficTable;
+use App\Models\PlantaData;
+
 /**
  * Home controller
  *
@@ -34,7 +36,7 @@ class GraficaController extends \Core\Controller
     {
         $id=$_SESSION['user_id'];
         $user = User::findOrFail($id);
-        $incidencias = Incidencia::limit(5)->get();
+        $incidencias = Incidencia::paginate(5);
         $data = array(
             'user' => $user,
             'incidencias' => $incidencias
@@ -48,7 +50,8 @@ class GraficaController extends \Core\Controller
      * @return void
      */
     public function createAction()
-    {
+    { 
+        
         $incidencia = new Incidencia();
         $incidencia->title = $_REQUEST['title'];
         $incidencia->status = $_REQUEST['status'];
@@ -124,5 +127,47 @@ class GraficaController extends \Core\Controller
 
         echo json_encode($data);
         
+    }
+    public function grafic1Action(){
+        
+        $datas = json_decode($_POST['datas']);
+        
+       
+        foreach($datas as $key => $data){
+            //{"number":"08","name":"August","year":"2020","_type":"month","date":"2020-08-19"}"logins_sun", "+", "logins_mon"
+            $produc_estimada = PlantaData::whereRaw('month(created_at) = month("'.$data->date.'")')
+            ->whereRaw('year(created_at) = year("'.$data->date.'")')->sum('produc_estimada');
+            $produc_real = PlantaData::whereRaw('month(created_at) = month("'.$data->date.'")')
+            ->whereRaw('year(created_at) = year("'.$data->date.'")')->sum('produc_estimada');
+            $data->produc_estimada = $produc_estimada;
+            $data->produc_real = $produc_real;
+            $datas[$key] =  $data;
+        }
+
+        $data = array(
+            'success' => true,
+            'message' => '<div class="alert alert-success alert-dismissible fade in" role="alert">
+            <strong>Exito!</strong> Se registro correctamente la informacion
+            </div>',
+            'data' => $datas
+        );
+        echo json_encode($data);
+    }
+    public function grafic2Action(){
+        
+        $datas = json_decode($_POST['datas']);
+        
+        //{"number":"08","name":"August","year":"2020","_type":"month","date":"2020-08-19"}
+        $planta = PlantaData::whereRaw('year(created_at) = year("'.$datas->date.'")')
+        ->where('semana_id','=',$datas->number)->get();
+
+        $data = array(
+            'success' => true,
+            'message' => '<div class="alert alert-success alert-dismissible fade in" role="alert">
+            <strong>Exito!</strong> Se registro correctamente la informacion
+            </div>',
+            'data' => $planta
+        );
+        echo json_encode($data);
     }
 }

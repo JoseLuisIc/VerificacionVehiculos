@@ -50,8 +50,9 @@ class LoginController extends \Core\Controller
             $password=sha1(md5($_POST["password"]));
 
             $user = User::where('email', '=', $email )
+                        ->orWhere('username','=',$email)
                         ->where('password', '=', $password)
-                        ->orWhere('username','=',$email)->first();
+                        ->first();
             if (!empty($user)) {
                 
                     /*Aqui se añaden las variables globales de sesión*/
