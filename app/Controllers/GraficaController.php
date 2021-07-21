@@ -7,7 +7,8 @@ use App\Models\User;
 use App\Models\Incidencia;
 use App\Models\GraficTable;
 use App\Models\PlantaData;
-
+use App\Models\Project;
+use App\Models\Category;
 /**
  * Home controller
  *
@@ -37,9 +38,14 @@ class GraficaController extends \Core\Controller
         $id=$_SESSION['user_id'];
         $user = User::findOrFail($id);
         $incidencias = Incidencia::paginate(5);
+        $turnos = Category::all();
+        $projects = Project::all();
+        
         $data = array(
             'user' => $user,
-            'incidencias' => $incidencias
+            'incidencias' => $incidencias,
+            'projects' => $projects,
+            'turnos' => $turnos
         );
         View::renderTemplate('grafica/index.php',$data);
     }
@@ -135,12 +141,9 @@ class GraficaController extends \Core\Controller
        
         foreach($datas as $key => $data){
             //{"number":"08","name":"August","year":"2020","_type":"month","date":"2020-08-19"}"logins_sun", "+", "logins_mon"
-            $produc_estimada = PlantaData::whereRaw('month(created_at) = month("'.$data->date.'")')
-            ->whereRaw('year(created_at) = year("'.$data->date.'")')->sum('produc_estimada');
-            $produc_real = PlantaData::whereRaw('month(created_at) = month("'.$data->date.'")')
-            ->whereRaw('year(created_at) = year("'.$data->date.'")')->sum('produc_estimada');
-            $data->produc_estimada = $produc_estimada;
-            $data->produc_real = $produc_real;
+            $planta = PlantaData::whereRaw('month(created_at) = month("'.$data->date.'")')
+            ->whereRaw('year(created_at) = year("'.$data->date.'")')->get();
+            $data->planta = $planta;
             $datas[$key] =  $data;
         }
 
@@ -156,8 +159,6 @@ class GraficaController extends \Core\Controller
     public function grafic2Action(){
         
         $datas = json_decode($_POST['datas']);
-        
-        //{"number":"08","name":"August","year":"2020","_type":"month","date":"2020-08-19"}
         $planta = PlantaData::whereRaw('year(created_at) = year("'.$datas->date.'")')
         ->where('semana_id','=',$datas->number)->get();
 

@@ -129,9 +129,21 @@ class Grafica{
                     if(response.data){
                         var data = response.data;
                         data = data.map(function (data, index, array) {
-                            return [data.name, parseFloat(data.produc_estimada/data.produc_real * 100)]; 
+                            var planta = data.planta;
+                            var produc_estimada = 0;
+                            var produc_real = 0;
+
+                            if(planta.length > 0){
+                                planta.forEach(element => {
+                                    produc_estimada += parseFloat(element.produc_estimada);
+                                });
+                                planta.forEach(element => { 
+                                    produc_real += parseFloat(element.produc_real);
+                                });
+                            }
+                            
+                            return [data.name, parseFloat(produc_estimada/produc_real * 100)]; 
                         });
-                        console.log(data);
                         const config = {
                             el:'container',
                             title: 'Productividad Mensual de 2021',
@@ -264,6 +276,8 @@ class Grafica{
             mes.year = moment(fecha_fin).subtract(i, 'months').format('YYYY');
             mes._type = 'month';
             mes.date = moment(fecha_fin).subtract(i, 'months').format('YYYY-MM-DD');
+            mes.proyect = proyecto;
+            mes.turno = turno;
             meses.push(mes);
         }
         return meses;
@@ -281,6 +295,8 @@ class Grafica{
             semana.year = moment(fecha_fin).subtract(i, 'months').format('YYYY');
             semana._type = 'week';
             semana.date = moment(fecha_fin).subtract(i, 'months').format('YYYY-MM-DD');
+            semana.proyect = proyecto;
+            semana.turno = turno;
             semanas.push(semana);
         }
         return semanas;

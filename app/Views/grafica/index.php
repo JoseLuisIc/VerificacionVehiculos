@@ -28,8 +28,9 @@
                     </label>
                     <select name="proyecto" id="proyecto" class="form-control">
                         <option value="1" selected>Seleccionar</option>
-                        <option value="2">Toyot</option>
-                        <option value="3">Draexlmaier</option>
+                        {% for project in projects %}
+                            <option value="{{project['id']}}">{{project['name']}}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -39,8 +40,9 @@
                     </label>
                     <select name="turno" id="turno" class="form-control">
                         <option value="1" selected>Seleccionar</option>
-                        <option value="2">Turno 1</option>
-                        <option value="3">Turno 2</option>
+                        {% for turno in turnos %}
+                            <option value="{{turno['id']}}">{{turno['name']}}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
